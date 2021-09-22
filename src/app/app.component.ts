@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  backgroundToggle = false;
+  toggle = false;
 
-  currentStyles = {     
-    'backgraund':  this.backgroundToggle  ? 'red' : 'blue'  
-  };
+  // currentStyles = {     
+  //   'backgraund':  this.backgroundToggle  ? 'red' : 'blue'  
+  // };
 }
