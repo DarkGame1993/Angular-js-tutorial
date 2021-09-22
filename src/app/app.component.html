@@ -1,5 +1,6 @@
 <h1>Hello</h1>
 <button (click)="toggle = !toggle" class="btn btn-primary">Click</button>
+<button (click)="toggle = 111" class="btn btn-primary">Click default</button>
 <!-- <div style='width: 200px; height: 200px; border: 1px solid black' [ngStyle]="currentStyles">
     Lorem ipsum
 </div> -->
@@ -10,9 +11,15 @@
 <!-- <p [class.blue]="!backgroundToggle"
     [class.red]="backgroundToggle"
 >lorem ipsum</p> -->
-<p *ngIf="toggle; else blueP" class class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, molestiae.</p>
+<!-- <p *ngIf="toggle; else blueP" class class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, molestiae.</p>
 
 <ng-template #blueP>
     <p class="blue">Lorem ipsum dolor sit amet, conconsectetur adipisicing elit. Voluptatem, adipisci?</p>
-</ng-template>
+</ng-template> -->
 
+
+<div [ngSwitch]="toggle">
+    <p *ngSwitchCase="true" class="red">Lorem ips</p>
+    <p *ngSwitchCase="false" class="blue">Lorem ipsum dolor sit amet</p>
+    <p *ngSwitchDefault>Lorem ipsum dolor sit amet.</p>
+</div>
