@@ -1,6 +1,6 @@
 <h1>Hello</h1>
-<button (click)="toggle = !toggle" class="btn btn-primary">Click</button>
-<button (click)="toggle = 111" class="btn btn-primary">Click default</button>
+<!-- <button (click)="toggle = !toggle" class="btn btn-primary">Click</button>
+<button (click)="toggle = 111" class="btn btn-primary">Click default</button> -->
 <!-- <div style='width: 200px; height: 200px; border: 1px solid black' [ngStyle]="currentStyles">
     Lorem ipsum
 </div> -->
@@ -18,8 +18,19 @@
 </ng-template> -->
 
 
-<div [ngSwitch]="toggle">
+<!-- <div [ngSwitch]="toggle">
     <p *ngSwitchCase="true" class="red">Lorem ips</p>
     <p *ngSwitchCase="false" class="blue">Lorem ipsum dolor sit amet</p>
     <p *ngSwitchDefault>Lorem ipsum dolor sit amet.</p>
-</div>
+</div> -->
+<ul>
+    <li *ngFor="let phone of objs" style="border: 1px solid red">
+        {{phone.title}} <span>{{phone.price}}</span>
+        <ul>
+            <li *ngFor="let item of phone.skills" style="border: 1px green">
+                <p>{{item.color}}</p>
+                <p>{{item.usb}}</p>
+            </li>
+        </ul>
+    </li>
+</ul>
