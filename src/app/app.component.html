@@ -1,2 +1,12 @@
-<h1>Hello</h1>
-{{now | date:'short' }}
+<div class="container">
+    <h1>Hello</h1>
+
+    <app-post-form></app-post-form>
+
+    <hr>
+
+    <app-post
+        *ngFor="let p of posts"
+        [post]="p"
+    ></app-post>    
+</div>
