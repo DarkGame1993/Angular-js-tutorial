@@ -16,4 +16,9 @@ export class AppComponent {
    {title: 'Хочу выучить Ангуляр компоненты', text: 'Я все еще учу компоненты', id: 1},
    {title: 'Следуюший блок ', text: 'Будет про директивы и еще про пайпы', id: 2}
   ];
+
+  updatePosts(post: Post) {
+    this.posts.unshift(post);
+    console.log('Post', post)
+  }
 }
