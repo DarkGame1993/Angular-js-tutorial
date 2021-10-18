@@ -1,5 +1,8 @@
 <div class="container">
     <h1>Angular Pipes</h1>
+    <p>Wait it ...{{ promise | async}}</p>
+
+    <p>{{date | async | date:'HH:mm:ss'}}</p>
     <!-- <p>{{e | number:'1.1-5'}}</p>
     <p>{{str | uppercase}}</p>
     <p>{{date | date:'yyyy-MM-dd, HH:mm:ss'}}</p>
@@ -11,7 +14,7 @@
     <p>{{10 | mult:8}}</p>
     <p>{{10 | mult:13}}</p>
     <p>{{'Hello Pipes      ' | exMarks}}</p> -->
-    <button class="btn btn-primary" (click)="searchField='title'">title</button>
+    <!-- <button class="btn btn-primary" (click)="searchField='title'">title</button>
     <button class="btn btn-primary" (click)="searchField='text'">text</button>
     <input type="text" [(ngModel)]="search">
     <button class="btn btn-primary" (click)="AddPost()">Add Post</button>
@@ -20,6 +23,6 @@
         class="card">
         <h2>{{post.title}}</h2>
         <p>{{post.text}}</p>
-    </div>
+    </div> -->
 
 </div>
