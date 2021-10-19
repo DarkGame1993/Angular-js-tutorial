@@ -1,24 +1,14 @@
 <div class="container">
-    <h1>Hello</h1>
+    <h1>Hello Services</h1>
+    <div class="card">
+        <p>Counter: {{appCounterService.counter}}</p>
+        <button class="btn" (click)="appCounterService.increase()">+</button>
+        <button class="btn" (click)="appCounterService.decrease()">-</button>
+    </div>
 
-    <h2>Subtitle</h2>
-
-    <app-post-form
-        (onAdd)="updatePosts($event)"
-    ></app-post-form>
-
-    <hr>
-    
-        <app-post
-            *ngFor="let p of posts"
-            [post]="p"
-            (onRemove)="removePost($event)"
-        >
-        <div #info>
-            <small *ngIf="p.text.length > 10; else short">Пост длинный </small>
-            <ng-template #short>
-                Пост короткий
-            </ng-template>
-        </div>
-        </app-post>   
+    <div class="card">
+        <p>Local Counter: {{localCounterService.counter}}</p>
+        <button class="btn" (click)="localCounterService.increase()">+</button>
+        <button class="btn" (click)="localCounterService.decrease()">-</button>
+    </div>
 </div>
