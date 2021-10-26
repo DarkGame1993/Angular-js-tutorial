@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface Post {
-  title: string;
-  text: string;
-  id?:number;
-}
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MyValidator } from './my.valid';
 
 @Component({
   selector: 'app-root',
@@ -12,26 +8,52 @@ export interface Post {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
- posts: Post[] = [
-   {title: 'Хочу выучить Ангуляр компоненты', text: 'Я все еще учу компоненты', id: 1},
-   {title: 'Следуюший блок ', text: 'Будет про директивы и еще про пайпы', id: 2}
-  ];
-  ngOnInit() :void {
-    setTimeout(() => {
-      console.log('TimeOut')
-      this.posts[0] = {
-        title: 'changed',
-        text: ' changed 2',
-        id: 33
-      }
-    })
+  form: FormGroup;
+
+  ngOnInit() {
+    this.form = new FormGroup({
+      email: new FormControl('', [
+        Validators.required, 
+        Validators.email,
+        MyValidator.restrictedEmails
+      ]),
+      password: new FormControl(null, [
+        Validators.required, 
+        Validators.minLength(6)
+      ]),
+      addresses: new FormGroup({
+        country: new FormControl('ua'),
+        city: new FormControl('', Validators.required)
+      }),
+
+      skills: new FormArray([])
+    });
   }
-  updatePosts(post: Post) {
-    this.posts.unshift(post);
-    // console.log('Post', post)
+  submit() {
+    if(this.form.valid) {
+      console.log(this.form)
+
+      const FormData = {...this.form.value}
+  
+      console.log("Data", FormData)
+    }
+    
+  }
+  setCapital() {
+    const cityMap = {
+      ru: 'Москва',
+      ua: 'Киев',
+      by: 'Минск'
+    }
+    const cityKey = this.form.get('addresses').get('country').value
+    const city = cityMap[cityKey]
+    this.form.patchValue({addresses: {city}})
+    console.log(cityKey)
   }
 
-  removePost(id: number) {
-    this.posts = this.posts.filter (p => p.id !== id)
+  addSkill() {
+    const control = new FormControl('', Validators.required);
+    //(<FormArray>this.form.get('skills')).push //как кастить
+    (this.form.get('skills') as FormArray).push(control)
   }
 }
