@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
         Validators.required, 
         Validators.email,
         MyValidator.restrictedEmails
-      ]),
+      ], MyValidator.uniqueEmail),
       password: new FormControl(null, [
         Validators.required, 
         Validators.minLength(6)
