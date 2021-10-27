@@ -3,20 +3,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { PostFormComponent } from './post-form/post-form.component';
-import { PostComponent } from './post/post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SwitchComponent } from './switch/switch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostFormComponent,
-    PostComponent
+    SwitchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

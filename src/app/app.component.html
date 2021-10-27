@@ -1,24 +1,9 @@
 <div class="container">
-    <h1>Hello</h1>
+    <h1>Hello ngModel</h1>
 
-    <h2>Subtitle</h2>
-
-    <app-post-form
-        (onAdd)="updatePosts($event)"
-    ></app-post-form>
-
+    <app-switch 
+        [(ngModel)]="appState"
+        (ngModelChange)="handleChange()"></app-switch>
     <hr>
-    
-        <app-post
-            *ngFor="let p of posts"
-            [post]="p"
-            (onRemove)="removePost($event)"
-        >
-        <div #info>
-            <small *ngIf="p.text.length > 10; else short">Пост длинный </small>
-            <ng-template #short>
-                Пост короткий
-            </ng-template>
-        </div>
-        </app-post>   
+    <p>appState: {{appState}}</p>
 </div>
