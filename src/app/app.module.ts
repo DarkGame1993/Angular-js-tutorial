@@ -3,20 +3,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { PostFormComponent } from './post-form/post-form.component';
-import { PostComponent } from './post/post.component';
+import { FormsModule} from '@angular/forms';
+import { HttpClientModule }   from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PostFormComponent,
-    PostComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
