@@ -9,12 +9,10 @@ import { Todo, TodosService } from './todos.service'
 })
 export class AppComponent implements OnInit {
   
-  
   loading = false;
-
   todos: Todo[] = [];
-
   todoTittle = ''
+  error = ''
 
   constructor(private todosService: TodosService) {}
 
@@ -44,6 +42,8 @@ export class AppComponent implements OnInit {
       .subscribe(todos => {
         this.todos = todos
         this.loading = false;
+      }, error => {
+        this.error = error.message;
       })
   }
 
@@ -55,8 +55,8 @@ export class AppComponent implements OnInit {
   }
 
   completedTodo(id: number) {
-    this.todosService.completedTodo(id).subscribe(todo => {
-        this.todos.find(t=> t.id === todo.id).completed = true;
+      this.todosService.completedTodo(id).subscribe(todo => {
+          this.todos.find(t=> t.id === todo.id).completed = true;
       })
   }
 }

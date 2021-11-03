@@ -10,28 +10,33 @@
     </div>
   
     <hr>
-    <div *ngIf='!loading; else blockLoading'>
-      <div *ngIf='todos.length; else blokEmpty'>
-        <div class="card" *ngFor='let todo of todos'>
-          <p>
-            <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
-            <span>
-              <button class="btn btn-danger" (click)="removeTodo(todo.id)">Удалить</button>
-              <button class="btn" [disabled]='todo.completed' (click)="completedTodo(todo.id)">Завершить</button>
-            </span>
-          </p>
+
+    <div *ngIf='error; else blockTodos' class="error">{{ error }}</div>
+
+    <ng-template #blockTodos>
+        <div *ngIf='!loading; else blockLoading'>
+          <div *ngIf='todos.length; else blokEmpty'>
+            <div class="card" *ngFor='let todo of todos'>
+              <p>
+                <span [class.completed]="todo.completed">{{todo.title | titlecase}}</span>
+                <span>
+                  <button class="btn btn-danger" (click)="removeTodo(todo.id)">Удалить</button>
+                  <button class="btn" [disabled]='todo.completed' (click)="completedTodo(todo.id)">Завершить</button>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <ng-template #blokEmpty>
+            <p>Empty block</p>
+          </ng-template>
         </div>
-      </div>
-      <ng-template #blokEmpty>
-        <p>
-          Empty block
-        </p>
-        
-      </ng-template>
-  </div>
-  <ng-template #blockLoading>
-    <p>
-      Loading...
-    </p>
-  </ng-template> 
+
+        <ng-template #blockLoading>
+          <p>Loading...</p>
+        </ng-template> 
+
+    </ng-template>
+    
+  
   </div>
