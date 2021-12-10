@@ -7,7 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private route:ActivatedRoute,private router:Router) { }
+  constructor(
+    private route:ActivatedRoute,
+    private router:Router) { }
 
   goToPostPage() {
     this.router.navigate(['posts'])
