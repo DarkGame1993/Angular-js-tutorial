@@ -10,6 +10,7 @@ import { PostsComponent } from './posts/posts.component'
 import { PostComponent } from './post/post.component'
 import { AboutExtraComponent } from './about-extra/about-extra.component'
 import { AppRoutingModule } from './app-routing.module';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent,
     PostsComponent,
     PostComponent,
-    AboutExtraComponent
+    AboutExtraComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
