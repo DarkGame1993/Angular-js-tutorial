@@ -1,24 +1,16 @@
-<div class="container">
-    <h1>Hello</h1>
-
-    <h2>Subtitle</h2>
-
-    <app-post-form
-        (onAdd)="updatePosts($event)"
-    ></app-post-form>
-
-    <hr>
-    
-        <app-post
-            *ngFor="let p of posts"
-            [post]="p"
-            (onRemove)="removePost($event)"
-        >
-        <div #info>
-            <small *ngIf="p.text.length > 10; else short">Пост длинный </small>
-            <ng-template #short>
-                Пост короткий
-            </ng-template>
-        </div>
-        </app-post>   
-</div>
+<nav class="navbar">
+    <h1>Angular Modules</h1>
+  
+    <ul>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+      <li routerLinkActive="active"><a routerLink="/about">About</a></li>
+    </ul>
+  </nav>
+  
+  <div class="container">
+    <div class="card">
+  
+      <router-outlet></router-outlet>
+  
+    </div>
+  </div>
