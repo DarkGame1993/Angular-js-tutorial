@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import {HomePageComponent} from './home-page/home-page.component'
-import {AppRoutingModule} from './app-routing.module'
-import { AboutPageModule } from './about-page/about-page.module';
+import { HomePageComponent } from './home-page/home-page.component';
+import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -19,7 +17,6 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     CommonModule,
     AppRoutingModule,
-    AboutPageModule,
     SharedModule
   ],
   providers: [],
