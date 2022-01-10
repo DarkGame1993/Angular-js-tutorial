@@ -1,37 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-
-export interface Post {
-  title: string;
-  text: string;
-  id?:number;
-}
+import { Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
+import { ModalComponent } from './modal/modal.component';
+import { RefDirective } from './ref.directive';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
- posts: Post[] = [
-   {title: 'Хочу выучить Ангуляр компоненты', text: 'Я все еще учу компоненты', id: 1},
-   {title: 'Следуюший блок ', text: 'Будет про директивы и еще про пайпы', id: 2}
-  ];
-  ngOnInit() :void {
-    setTimeout(() => {
-      console.log('TimeOut')
-      this.posts[0] = {
-        title: 'changed',
-        text: ' changed 2',
-        id: 33
-      }
-    })
-  }
-  updatePosts(post: Post) {
-    this.posts.unshift(post);
-    // console.log('Post', post)
-  }
+export class AppComponent {
+  
+  @ViewChild(RefDirective) refDir: RefDirective
 
-  removePost(id: number) {
-    this.posts = this.posts.filter (p => p.id !== id)
-  }
+  constructor(private resolver: ComponentFactoryResolver) {}
+
+ showModal() {
+  const modalFactory = this.resolver.resolveComponentFactory(ModalComponent)
+  this.refDir.containerRef.clear()
+
+  const component = this.refDir.containerRef.createComponent(modalFactory)
+
+  component.instance.title = 'Dynamic Component';
+
+  component.instance.close.subscribe(() => 
+  this.refDir.containerRef.clear())
+ }
 }

@@ -1,24 +1,19 @@
-<div class="container">
-    <h1>Hello</h1>
+<ng-template appRef></ng-template>
 
-    <h2>Subtitle</h2>
-
-    <app-post-form
-        (onAdd)="updatePosts($event)"
-    ></app-post-form>
-
-    <hr>
-    
-        <app-post
-            *ngFor="let p of posts"
-            [post]="p"
-            (onRemove)="removePost($event)"
-        >
-        <div #info>
-            <small *ngIf="p.text.length > 10; else short">Пост длинный </small>
-            <ng-template #short>
-                Пост короткий
-            </ng-template>
-        </div>
-        </app-post>   
-</div>
+<nav class="navbar">
+    <h1>Angular Dynamic components</h1>
+  </nav>
+  
+  <div class="container">
+    <div class="card">
+  
+      <h1>Some content</h1>
+  
+      <button class="btn" (click)="showModal()" >Show modal</button>
+        <!-- <app-modal
+            *ngIf="modal"
+            title="Modal Window"
+            (click)="modal = false"
+        ></app-modal> -->
+    </div>
+  </div>
